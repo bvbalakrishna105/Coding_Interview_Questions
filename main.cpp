@@ -60,8 +60,29 @@ void exampleGetMinStackVal() {
     std::cout << "Minimum value in the stack after popping: " << stack.getMin() << std::endl;
 }
 
+// Function to toggle bit at a given position
+int toggleBit(int num, int position) {
+    // Create a mask with only the bit at the given position set (1)
+    int mask = 1 << position;
+
+    // XOR the number with the mask to toggle the bit
+    return num ^ mask;
+}
+
+void exampleToggleBits() {
+
+    // Toggle the bit at the given position
+    int position = 2;
+    int result = toggleBit(10, position);
+
+    // Output the result
+    std::cout << "Number after toggling bit at position " << position << ": " << result << std::endl;
+
+}
+
 int main() {
     exampleGetMinStackVal();
+    exampleToggleBits();
 
     return 0;
 }
