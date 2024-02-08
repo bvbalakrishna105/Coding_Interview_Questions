@@ -1,5 +1,4 @@
-#include <iostream>
-#include <stack>
+#include "coding_interviews.h"
 
 class MinStack {
 private:
@@ -82,7 +81,9 @@ void exampleToggleBits() {
 
 int main() {
     exampleGetMinStackVal();
-    exampleToggleBits();
+    exampleToggleBits();;
+
+    //std::cout << "Show static variable val : "<< a << std::endl;
 
     return 0;
 }
