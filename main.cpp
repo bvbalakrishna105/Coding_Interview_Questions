@@ -76,12 +76,70 @@ void exampleToggleBits() {
 
     // Output the result
     std::cout << "Number after toggling bit at position " << position << ": " << result << std::endl;
+}
+
+
+template<typename T>
+class ThreadSafeLinkedList {
+private:
+    struct Node {
+        T data;
+        Node* next;
+        Node(const T& val) : data(val), next(nullptr) {}
+    };
+
+    Node* head;
+    std::mutex mtx;
+
+public:
+    ThreadSafeLinkedList() : head(nullptr) {}
+
+    ~ThreadSafeLinkedList() {
+        Node* current = head;
+        while (current) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+    }
+
+    void insert(const T& val) {
+        std::lock_guard<std::mutex> lock(mtx);
+        Node* newNode = new Node(val);
+        newNode->next = head;
+        head = newNode;
+    }
+
+    void display() {
+        std::lock_guard<std::mutex> lock(mtx);
+        Node* current = head;
+        while (current) {
+            std::cout << current->data << " ";
+            current = current->next;
+        }
+        std::cout << std::endl;
+    }
+};
+
+
+void exampleThreadSafeLinkedList() {
+    ThreadSafeLinkedList<int> list;
+
+    // Insert elements into the list from multiple threads
+    list.insert(10);
+    list.insert(20);
+    list.insert(30);
+
+    // Display the contents of the list from multiple threads
+    list.display();
 
 }
 
+
 int main() {
     exampleGetMinStackVal();
-    exampleToggleBits();;
+    exampleToggleBits();
+    exampleThreadSafeLinkedList();
 
     //std::cout << "Show static variable val : "<< a << std::endl;
 
