@@ -48,10 +48,6 @@ public:
 
 
 void exampleGetMinStackVal() {
-    
-}
-
-int main() {
     MinStack stack;
     stack.push(3);
     stack.push(2);
@@ -62,6 +58,10 @@ int main() {
 
     stack.pop();
     std::cout << "Minimum value in the stack after popping: " << stack.getMin() << std::endl;
+}
+
+int main() {
+    exampleGetMinStackVal();
 
     return 0;
 }
