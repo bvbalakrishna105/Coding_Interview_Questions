@@ -1,0 +1,14 @@
+Steps:
+1. At first, Collect the necessary requirements (POC)
+2. Choose the OS (Windows/Linux/AIX)
+3. Choose the Tech Stack for above requirements (Front End, Middle Layer, Back End and DB)
+4. Choose the IDE for development
+5. Choose the compiler
+6. Choose the buid system like make file
+7. Choose the version control
+8. Choose the debugger
+9. Choose the static code Analysis Tools
+10. Choose the profilling Tools
+11. Choose the memory leak detection tools
+12. Choose the code coverage tools
+13. Choose the software deliverable package format
