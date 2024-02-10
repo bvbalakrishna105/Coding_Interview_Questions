@@ -3,4 +3,4 @@
 #include <mutex>
 
 
-static int a = 10;
+//static int a = 10;
