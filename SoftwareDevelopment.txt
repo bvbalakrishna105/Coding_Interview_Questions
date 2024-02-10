@@ -12,3 +12,15 @@ Steps:
 11. Choose the memory leak detection tools
 12. Choose the code coverage tools
 13. Choose the software deliverable package format
+
+
+
+
+For example :
+Profiling option
+
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ gprof -p stack gmon.out > profile_report.txt
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ g++ -pg -o stack ipc.cpp
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ gprof -p stack gmon.out > profile_report.txt
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ g++ -pg -o stack procon.cpp
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ gprof -p stack gmon.out > profile_report.txt
