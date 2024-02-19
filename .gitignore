@@ -1,0 +1,10 @@
+report.xml
+stack
+profile_report.txt
+my_program-ipc.gcno
+my_program-ipc.gcda
+my_program
+gmon.out
+.vscode
+mystack
+ciq_make
