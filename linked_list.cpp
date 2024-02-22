@@ -18,7 +18,85 @@ void displaySLL(sll **head) {
     }
 }
 
+int lenOfLinkedList(sll **head){
+
+    sll *cur = *head;
+    int len = 0;
+    while(cur){
+        len = len + 1;
+        cur = cur->next;
+    }
+
+    return len;
+}
+
+
+void appendLinkedList(sll **newHead, sll *node){
+
+    sll * cur = *newHead;
+    sll *prev = NULL;
+
+    if (cur == NULL) {
+        *newHead = node;
+        return;
+    }
+
+    while (cur) {
+        prev = cur;
+        cur = cur->next;
+    }
+    prev->next = node;
+}
+
+
+void splitLinkedList(sll **head) {
+
+    sll *odd = NULL;
+    sll *even = NULL;
+    sll *cur = *head;
+    sll *nxt = NULL;
+    sll *prev = NULL;
+
+    if (!cur) {
+        cout << "Split is not possible" << endl;
+    }
+
+    if (lenOfLinkedList(head) < 3) {
+        cout << "Split is not need becuase it's only two elements" << endl;
+    }
+
+    while(cur) {
+
+        // ODD 
+        if ((cur->data) % 2 != 0 ) {
+            nxt = cur->next;
+            cur->next = NULL;
+            appendLinkedList(&odd, cur);
+            cur = nxt;
+
+        }else {
+            nxt = cur->next;
+            cur->next = NULL;
+            appendLinkedList(&even, cur);
+            cur = nxt;
+        }
+    }
+
+    cur = odd;
+
+    while (cur) {
+        prev = cur;
+        cur = cur->next;
+    }
+    prev->next = even;
+
+    *head = odd;
+}
+
+
+
 void reverseLinkedList(sll **head) {
+
     sll *cur = *head;
     sll *prev = NULL;
     sll *nxt = NULL;
@@ -86,10 +164,14 @@ int main() {
     insertDataInSLL(&Head, 4);
     insertDataInSLL(&Head, 5);
     insertDataInSLL(&Head, 6);
-    reverseLinkedList(&Head);
+    insertDataInSLL(&Head, 7);
+    insertDataInSLL(&Head, 8);
+    insertDataInSLL(&Head, 9);
+    insertDataInSLL(&Head, 10);
+    //reverseLinkedList(&Head);
+    cout << lenOfLinkedList(&Head) << endl;
+    //splitLinkedList(&Head);
     displaySLL(&Head);
-
-
 
     cout << "Linked Program" << endl; 
     return 0;
