@@ -18,6 +18,22 @@ void displaySLL(sll **head) {
     }
 }
 
+void reverseLinkedList(sll **head) {
+    sll *cur = *head;
+    sll *prev = NULL;
+    sll *nxt = NULL;
+
+    while (cur) {
+        nxt = cur->next;
+        cur->next = prev;
+        prev= cur;
+        cur = nxt;
+    }
+    *head = prev;
+}
+
+
+
 void insertDataInSLL(sll **head, int val){
 
     sll *tmp = NULL;
@@ -70,6 +86,7 @@ int main() {
     insertDataInSLL(&Head, 4);
     insertDataInSLL(&Head, 5);
     insertDataInSLL(&Head, 6);
+    reverseLinkedList(&Head);
     displaySLL(&Head);
 
 
