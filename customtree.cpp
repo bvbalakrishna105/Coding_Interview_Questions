@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -72,34 +73,77 @@ private:
             cout << root->data << " ";
         }
     }
-       
+
 public:
     void inorderTraversal();
     void preorderTraversal();
     void postorderTraversal();
+    void inorderIteratorTraversal();
+    void preorderIteratorTraversal();
+
 };
 
 
 void BinarySearchTree::inorderTraversal(){
-        inorder(root);
-        cout << endl;
+    cout << "Inorder : ";
+    inorder(root);
+    cout << endl;
 
 }
 
 void BinarySearchTree::postorderTraversal(){
-        postorder(root);
-        cout << endl;
+    cout << "Postorder : ";
+    postorder(root);
+    cout << endl;
 
 }
 
 void BinarySearchTree::preorderTraversal(){
-        preorder(root);
-        cout << endl;
+    cout << "Preorder : ";
+    preorder(root);
+    cout << endl;
 
 }
 
+void BinarySearchTree::inorderIteratorTraversal(){
 
+    cout << "inorderIteratorTraversal : ";
+    stack<Node*> st;
 
+    Node *tmp = NULL;
+
+    while(1) {
+
+        if (root) {
+            st.push(root);
+            root = root->left;
+            continue;
+        }
+
+        if (st.empty()){
+            cout << endl;
+            break;
+        }
+
+        tmp = st.top();
+
+        if (tmp->left == NULL && tmp->right == NULL) {
+            cout << tmp->data << " ";
+            st.pop();
+            continue;
+        }
+
+        if (tmp->right) {
+            cout << tmp->data << " ";
+            st.pop();
+            root = tmp->right;
+        }
+    }
+}
+
+void BinarySearchTree::preorderIteratorTraversal(){
+
+}
 
 
 int main() {
@@ -112,13 +156,16 @@ int main() {
     bst.insert(15);
     bst.insert(3);
     bst.insert(7);
+    bst.insert(13);
+    bst.insert(17);
+
+    // The binary search tree is now constructed
+    // You can add more values or perform other operations as needed
 
     bst.inorderTraversal();
     bst.preorderTraversal();
     bst.postorderTraversal();
-
-    // The binary search tree is now constructed
-    // You can add more values or perform other operations as needed
+    bst.inorderIteratorTraversal();
 
     return 0;
 }
