@@ -80,6 +80,7 @@ public:
     void postorderTraversal();
     void inorderIteratorTraversal();
     void preorderIteratorTraversal();
+    void postorderIteratorTraversal();
 
 };
 
@@ -178,6 +179,52 @@ void BinarySearchTree::preorderIteratorTraversal() {
 }
 
 
+void BinarySearchTree::postorderIteratorTraversal() {
+    cout << "BinarySearchTree::postorderIteratorTraversal : ";
+
+    Node *tmpRoot = root;
+    Node *tmp = NULL;
+    stack<Node*> st;
+
+    while(1) {
+
+        if (tmpRoot) {
+            st.push(tmpRoot);
+            tmpRoot = tmpRoot->left;
+            continue;
+        }
+
+        if(st.empty()) {
+            cout << endl;
+            break;
+        }
+
+        tmp = st.top();
+
+        // To make sure that visited node should not visit once again
+        if (tmp->data < 0) {
+            cout << -(tmp->data) << " ";
+            st.pop();
+            continue;
+        }
+
+        if(tmp->left == NULL && tmp->right == NULL) {
+            cout << tmp->data << " ";
+            st.pop();
+            continue;
+        }
+
+        if (tmp->right) {
+            st.pop();
+            tmp->data = -(tmp->data);
+            st.push(tmp);
+            tmpRoot = tmp->right;
+        }
+
+    }
+}
+
+
 int main() {
     // Create an instance of BinarySearchTree
     BinarySearchTree bst;
@@ -199,6 +246,7 @@ int main() {
     bst.postorderTraversal();
     //bst.inorderIteratorTraversal();
     //bst.preorderIteratorTraversal();
+    //bst.postorderIteratorTraversal();
 
     return 0;
 }
