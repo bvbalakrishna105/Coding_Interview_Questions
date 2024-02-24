@@ -226,7 +226,6 @@ void BinarySearchTree::postorderIteratorTraversal() {
     }
 }
 
-
 void BinarySearchTree::levelOrderTraversal() {
 
     cout << "BinarySearchTree::levelOrderTraversal ";
@@ -280,7 +279,7 @@ int main() {
     //bst.inorderIteratorTraversal();
     //bst.preorderIteratorTraversal();
     //bst.postorderIteratorTraversal();
-    bst.levelOrderTraversal();
+    //bst.levelOrderTraversal();
 
     return 0;
 }
