@@ -141,7 +141,39 @@ void BinarySearchTree::inorderIteratorTraversal(){
     }
 }
 
-void BinarySearchTree::preorderIteratorTraversal(){
+void BinarySearchTree::preorderIteratorTraversal() {
+
+    cout << "BinarySearchTree::preorderIteratorTraversal : ";
+    stack<Node*> st;
+
+    Node *tmp = NULL;
+
+    while(1) {
+
+        if(root) {
+            cout << root->data << " ";
+            st.push(root);
+            root = root->left;
+            continue;
+        }
+
+        if (st.empty()) {
+            cout << endl;
+            break;
+        }
+
+        tmp = st.top();
+
+        if (tmp->left == NULL && tmp->right == NULL) {
+            st.pop();
+            continue;
+        }
+
+        if(tmp->right) {
+            st.pop();
+            root = tmp->right;
+        }
+    }
 
 }
 
@@ -165,7 +197,8 @@ int main() {
     bst.inorderTraversal();
     bst.preorderTraversal();
     bst.postorderTraversal();
-    bst.inorderIteratorTraversal();
+    //bst.inorderIteratorTraversal();
+    //bst.preorderIteratorTraversal();
 
     return 0;
 }
