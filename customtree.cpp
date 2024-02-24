@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -81,6 +82,7 @@ public:
     void inorderIteratorTraversal();
     void preorderIteratorTraversal();
     void postorderIteratorTraversal();
+    void levelOrderTraversal();
 
 };
 
@@ -225,6 +227,37 @@ void BinarySearchTree::postorderIteratorTraversal() {
 }
 
 
+void BinarySearchTree::levelOrderTraversal() {
+
+    cout << "BinarySearchTree::levelOrderTraversal ";
+
+    queue<Node*> qt;
+
+    Node *tmp = NULL;
+
+    qt.push(root);
+
+    while(!qt.empty()) {
+
+        tmp = qt.front();
+        qt.pop();
+
+        if (tmp->left) {
+            qt.push(tmp->left);
+        }
+
+        if(tmp->right) {
+            qt.push(tmp->right);
+        }
+
+        cout << tmp->data << " ";
+    }
+
+    cout << endl;
+
+}
+
+
 int main() {
     // Create an instance of BinarySearchTree
     BinarySearchTree bst;
@@ -247,6 +280,7 @@ int main() {
     //bst.inorderIteratorTraversal();
     //bst.preorderIteratorTraversal();
     //bst.postorderIteratorTraversal();
+    bst.levelOrderTraversal();
 
     return 0;
 }
