@@ -83,6 +83,8 @@ public:
     void preorderIteratorTraversal();
     void postorderIteratorTraversal();
     void levelOrderTraversal();
+    Node *findLCAUtil(Node *root, int lNodeData, int rNodeData);
+    void  findLCA();
 
 };
 
@@ -257,6 +259,42 @@ void BinarySearchTree::levelOrderTraversal() {
 }
 
 
+void BinarySearchTree::findLCA() {
+
+    Node *resNode = findLCAUtil(root, 3, 13);
+
+    if (resNode) {
+        cout << "LCA of given nodes " <<resNode->data << " ";
+    }
+}
+
+Node *BinarySearchTree::findLCAUtil(Node *root, int lNodeData, int rNodeData) {
+
+    Node *lRoot = NULL;
+    Node *rRoot = NULL;
+
+    if (root) {
+
+        if (root->data > lNodeData && root->data < rNodeData) {
+            return root;
+        }
+
+        if (root->data > lNodeData && root->data > rNodeData) {
+            lRoot = findLCAUtil(root->left, lNodeData, rNodeData);
+        }
+
+        if (root->data < lNodeData && root->data < rNodeData) {
+            rRoot = findLCAUtil(root->right, lNodeData, rNodeData);
+        }
+    }
+
+    if (lRoot) {
+        return lRoot;
+    }
+    return rRoot;
+}
+
+
 int main() {
     // Create an instance of BinarySearchTree
     BinarySearchTree bst;
@@ -280,6 +318,7 @@ int main() {
     //bst.preorderIteratorTraversal();
     //bst.postorderIteratorTraversal();
     //bst.levelOrderTraversal();
+    bst.findLCA();
 
     return 0;
 }
