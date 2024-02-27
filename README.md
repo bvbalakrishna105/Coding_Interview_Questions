@@ -15,3 +15,4 @@ List of tools/modules
 12. Client and Server with Go
 13. Go with C++
 14. Delve for Go
+15. RADIS with Go
