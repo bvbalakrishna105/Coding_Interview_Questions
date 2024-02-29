@@ -18,8 +18,9 @@ List of tools/modules
 15. REDIS with Go
 
 
-CSCOPE
-++++++Navigation Shortcuts:
+# CSCOPE
+
+Navigation Shortcuts:
 
 Ctrl+]: Go to the definition of the symbol under the cursor.
 Ctrl+t: Go back to the previous location.
@@ -46,12 +47,12 @@ Ctrl+l: Redraw screen.
 Ctrl+k: Clear search history.
 Ctrl+h: Display help.
 
-Setup ctags
-+++++++++++
+# Setup ctags
+
 ctags -R
 
-Git  Shortcuts and Aliases
-++++++++++++++++++++++++++
+# Git  Shortcuts and Aliases
+
 nano ~/.gitconfig
 
 
@@ -64,8 +65,8 @@ nano ~/.gitconfig
 
 
 
-GDB Shortcuts
-+++++++++++++++
+# GDB Shortcuts
+
 Basic Commands:
 
 run: Start executing the program.
@@ -110,9 +111,8 @@ Ctrl+c: Interrupt execution and return to GDB prompt.
 Ctrl+d: Quit GDB.
 
 
-+++++++++++++++++++++++++++++
-VI Editor ShortCuts
-++++++++++++++++++++++++++++
+# VI Editor ShortCuts
+
 Basic Navigation:
 
 h: Move the cursor left.
@@ -162,10 +162,8 @@ Ctrl+g: Show the current line number and file status.
 :set syntax=on: Enable syntax highlighting.
 
 
+# Grep Shortcuts
 
-+++++++++++++++++++++++++++
-grep shortcuts
-+++++++++++++++++++++++++++
 Basic Search:
 
 grep <pattern> <file>: Search for a pattern in a file.
@@ -207,9 +205,7 @@ ps aux | grep "process": Filter processes containing "process" in their names.
 dmesg | grep -i "error": Search kernel messages for errors (case-insensitive).
 
 
-================================================================
-valgrind
-================================================================
+# valgrind
 
 sudo apt-get install valgrind
 
@@ -261,9 +257,10 @@ valgrind --tool=massif ./your_program
 #Valgrind can generate call graphs, showing function call relationships and memory usage.
 valgrind --tool=callgrind ./your_program
 
-===============================
-Static code analysis
-==============================
+
+
+
+# Static code analysis
 
 # installation 
 sudo apt-get install cppcheck
