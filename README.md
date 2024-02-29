@@ -161,3 +161,104 @@ Ctrl+g: Show the current line number and file status.
 :set nonu: Hide line numbers.
 :set syntax=on: Enable syntax highlighting.
 
+
+
++++++++++++++++++++++++++++
+grep shortcuts
++++++++++++++++++++++++++++
+Basic Search:
+
+grep <pattern> <file>: Search for a pattern in a file.
+grep <pattern> <file1> <file2> ...: Search for a pattern in multiple files.
+grep -r <pattern> <directory>: Recursively search for a pattern in all files within a directory.
+Options and Modifiers:
+
+-i: Ignore case (case-insensitive search).
+-v: Invert match (show lines that do not match the pattern).
+-n: Show line numbers.
+-l: Show only the names of files with matching lines.
+-c: Show only the count of matching lines.
+-w: Match whole words only.
+-E: Use extended regular expressions (regex).
+-A <num>: Show <num> lines after the matching line.
+-B <num>: Show <num> lines before the matching line.
+-C <num>: Show <num> lines before and after the matching line.
+Regular Expressions:
+
+.: Match any single character.
+^: Anchor to the beginning of a line.
+$: Anchor to the end of a line.
+[]: Match any character inside the brackets.
+[^]: Match any character not inside the brackets.
+*: Match zero or more occurrences of the previous character.
++: Match one or more occurrences of the previous character.
+?: Match zero or one occurrence of the previous character.
+\: Escape special characters.
+Examples:
+
+grep "pattern" file.txt: Search for "pattern" in file.txt.
+grep -i "pattern" file.txt: Case-insensitive search for "pattern" in file.txt.
+grep -rn "pattern" /path/to/directory: Recursively search for "pattern" in all files within /path/to/directory, showing line numbers.
+grep -E "word1|word2" file.txt: Search for either "word1" or "word2" using extended regex.
+Combining with Other Commands:
+
+grep "pattern" file.txt | wc -l: Count the number of lines containing "pattern" in file.txt.
+ps aux | grep "process": Filter processes containing "process" in their names.
+dmesg | grep -i "error": Search kernel messages for errors (case-insensitive).
+
+
+================================================================
+valgrind
+================================================================
+
+sudo apt-get install valgrind
+
+#Run Program with Valgrind:
+
+valgrind ./your_program
+
+#Check for Memory Leaks:
+
+valgrind --leak-check=full ./your_program
+
+
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ valgrind --leak-check=full ./tree 
+==7490== Memcheck, a memory error detector
+==7490== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7490== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==7490== Command: ./tree
+==7490== 
+Inorder : 3 5 7 10 13 15 17 
+Preorder : 10 5 3 7 15 13 17 
+Postorder : 3 7 5 13 17 15 10 
+LCA of given nodes 10 ==7490== 
+==7490== HEAP SUMMARY:
+==7490==     in use at exit: 168 bytes in 7 blocks
+==7490==   total heap usage: 9 allocs, 2 frees, 73,896 bytes allocated
+==7490== 
+==7490== 168 (24 direct, 144 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 7
+==7490==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7490==    by 0x109E70: BinarySearchTree::insertRecursive(Node*, int) (customtree.cpp:29)
+==7490==    by 0x109F31: BinarySearchTree::insert(int) (customtree.cpp:49)
+==7490==    by 0x109CAF: main (customtree.cpp:303)
+==7490== 
+==7490== LEAK SUMMARY:
+==7490==    definitely lost: 24 bytes in 1 blocks
+==7490==    indirectly lost: 144 bytes in 6 blocks
+==7490==      possibly lost: 0 bytes in 0 blocks
+==7490==    still reachable: 0 bytes in 0 blocks
+==7490==         suppressed: 0 bytes in 0 blocks
+==7490== 
+==7490== For lists of detected and suppressed errors, rerun with: -s
+==7490== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+
+
+#Valgrind can profile heap memory usage to identify memory allocation hotspots.
+valgrind --tool=massif ./your_program
+
+
+#Valgrind can generate call graphs, showing function call relationships and memory usage.
+valgrind --tool=callgrind ./your_program
+
+
