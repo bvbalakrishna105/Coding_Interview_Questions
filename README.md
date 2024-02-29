@@ -261,4 +261,16 @@ valgrind --tool=massif ./your_program
 #Valgrind can generate call graphs, showing function call relationships and memory usage.
 valgrind --tool=callgrind ./your_program
 
+===============================
+Static code analysis
+==============================
+
+# installation 
+sudo apt-get install cppcheck
+
+# Verifiction
+cppcheck --version
+
+# Usage of cpp check
+cppcheck <source_file.cpp>
 
