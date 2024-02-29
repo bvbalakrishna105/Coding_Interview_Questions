@@ -46,5 +46,6 @@ Ctrl+l: Redraw screen.
 Ctrl+k: Clear search history.
 Ctrl+h: Display help.
 
-
-
+Setup ctags
++++++++++++
+ctags -R
