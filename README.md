@@ -109,3 +109,55 @@ Ctrl+l: Redraw screen.
 Ctrl+c: Interrupt execution and return to GDB prompt.
 Ctrl+d: Quit GDB.
 
+
++++++++++++++++++++++++++++++
+VI Editor ShortCuts
+++++++++++++++++++++++++++++
+Basic Navigation:
+
+h: Move the cursor left.
+j: Move the cursor down.
+k: Move the cursor up.
+l: Move the cursor right.
+0: Move to the beginning of the line.
+$: Move to the end of the line.
+gg: Move to the beginning of the file.
+G: Move to the end of the file.
+<line-number>G: Move to a specific line number.
+Editing:
+
+i: Insert text before the cursor.
+a: Append text after the cursor.
+I: Insert text at the beginning of the line.
+A: Append text at the end of the line.
+o: Open a new line below the current line.
+O: Open a new line above the current line.
+x: Delete the character under the cursor.
+dd: Delete the current line.
+yy: Yank (copy) the current line.
+p: Paste the yanked text after the cursor.
+P: Paste the yanked text before the cursor.
+Search and Replace:
+
+/: Search forward for a pattern.
+?: Search backward for a pattern.
+n: Move to the next occurrence of the search pattern.
+N: Move to the previous occurrence of the search pattern.
+:s/pattern/replacement/: Replace the first occurrence of a pattern on the current line.
+:s/pattern/replacement/g: Replace all occurrences of a pattern on the current line.
+:%s/pattern/replacement/g: Replace all occurrences of a pattern in the entire file.
+Saving and Quitting:
+
+:w: Save changes to the file.
+:q: Quit (exit) the vi editor.
+:q!: Quit without saving changes (force quit).
+:wq or :x: Save changes and quit.
+Miscellaneous:
+
+u: Undo the last edit.
+Ctrl+r: Redo the last undone edit.
+Ctrl+g: Show the current line number and file status.
+:set nu: Show line numbers.
+:set nonu: Hide line numbers.
+:set syntax=on: Enable syntax highlighting.
+
