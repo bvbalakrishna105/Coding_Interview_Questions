@@ -49,3 +49,16 @@ Ctrl+h: Display help.
 Setup ctags
 +++++++++++
 ctags -R
+
+Git  Shortcuts and Aliases
+++++++++++++++++++++++++++
+nano ~/.gitconfig
+
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
