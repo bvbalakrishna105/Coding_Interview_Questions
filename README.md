@@ -258,16 +258,14 @@ valgrind --tool=massif ./your_program
 valgrind --tool=callgrind ./your_program
 
 
-
-
 # Static code analysis
 
-# installation 
+installation 
 sudo apt-get install cppcheck
 
-# Verifiction
+Verifiction
 cppcheck --version
 
-# Usage of cpp check
+Usage of cpp check
 cppcheck <source_file.cpp>
 
