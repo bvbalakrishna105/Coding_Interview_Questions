@@ -251,21 +251,51 @@ LCA of given nodes 10 ==7490==
 
 
 #Valgrind can profile heap memory usage to identify memory allocation hotspots.
+
 valgrind --tool=massif ./your_program
 
 
 #Valgrind can generate call graphs, showing function call relationships and memory usage.
+
 valgrind --tool=callgrind ./your_program
 
 
 # Static code analysis
 
-installation 
+#installation
+
 sudo apt-get install cppcheck
 
-Verifiction
+#Verifiction
+
 cppcheck --version
 
-Usage of cpp check
+#Usage of cpp check
+
 cppcheck <source_file.cpp>
+
+
+
+Core dump analysis
+++++++++++++++++++
+
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ valgrind --tool=memcheck --track-origins=yes ./ctree core.143760.11.18446744073709551615.1.143760
+....
+==145608== Invalid read of size 4
+
+==145608==    at 0x109B90: BinarySearchTree::findLCA() (customtree.cpp:268)
+
+==145608==    by 0x109D4D: main (customtree.cpp:322)
+
+==145608==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+
+==145608==
+
+
+vidkrix@venky-worker:~/Desktop/work/Coding_Interview_Questions$ gdb ./ctree core.143760.11.18446744073709551615.1.143760 
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04) 12.1
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0  0x0000566c29a17b90 in BinarySearchTree::findLCA (this=0x7fff2fee2430) at customtree.cpp:268
+268             cout << "LCA of given nodes " <<resNode->data << " ";
 
