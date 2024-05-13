@@ -97,10 +97,130 @@ void examplePrintEvenOdd() {
 
 }
 
+typedef struct Node {
+    int data;
+    struct Node *next; 
+}SLL;
+
+
+void insertInSLL(SLL **Head, int data) {
+    SLL *cur = *Head;
+
+    if (!cur) {
+        SLL *tmp = NULL;
+
+        tmp = new SLL;
+
+        if (tmp) {
+            tmp->data = data;
+            tmp->next = NULL;
+        }
+
+        *Head = tmp;
+        return;
+    }
+
+    while(cur) {
+        if (cur->next == NULL) {
+            SLL *tmp = NULL;
+            tmp = new SLL;
+            
+            if (tmp) {
+                tmp->data = data;
+                tmp->next = NULL;
+            } else {
+                cout << "Memory allocation is failed";
+                return;
+            }
+
+            cur->next = tmp;
+            return;
+        }
+        cur = cur->next;
+    }    
+}
+
+void showSLL(SLL **Head) {
+    SLL *cur = *Head;
+
+    while(cur) {
+        cout << cur->data << endl;
+        cur = cur->next;
+    }
+}
+
+void reverseSLL(SLL **Head) {
+    SLL *cur = *Head;
+    SLL *nxt = NULL;
+    SLL *prev = NULL;
+
+    while (cur) {
+        nxt = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = nxt;
+    }
+    *Head = prev;
+}
+
+bool checkPalindrome(SLL **Head) {
+    SLL *cur = *Head;
+    SLL *slow = *Head;
+    SLL *fast = *Head;
+    SLL *prev = NULL;
+
+    while (slow && fast) {
+
+        slow = slow->next;
+        prev = slow;
+        fast = fast->next;
+
+        if (fast) {
+            fast = fast->next;
+        }
+    }
+
+    prev->next = NULL;
+    reverseSLL(&slow);
+
+    while (cur && slow) {
+        if (cur->data == slow->data) {
+            cur = cur->next;
+            slow = slow->next;
+            continue;
+        }else {
+            return false;
+        }
+        cur = cur->next;
+        slow = slow->next;
+    }
+    return true;
+}
+
+
+
+void exampleToCheckGivenSLLIsPaliandromeOrNot() {
+
+    SLL *head = NULL;
+
+    insertInSLL(&head, 1);
+    insertInSLL(&head, 2);
+    insertInSLL(&head, 3);
+    insertInSLL(&head, 1);
+    insertInSLL(&head, 1);
+
+    showSLL(&head);
+    //reverseSLL(&head);
+    //showSLL(&head);
+    cout << "Given SLL is : "<<checkPalindrome(&head) << endl;
+
+}
+
 int main() {
 
-    exampleProducerConsumer();
-    examplePrintEvenOdd();
+    //exampleProducerConsumer();
+    //examplePrintEvenOdd();
+    exampleToCheckGivenSLLIsPaliandromeOrNot();
 
     return 0;
 }
